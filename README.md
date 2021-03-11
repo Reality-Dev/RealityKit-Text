@@ -26,7 +26,7 @@ Go to File > Swift Packages > Add Package Dependency, and paste in this link:
 ---
 ## Usage
 
-See the [Example](./TextEntity-Example) for a full working example.
+See the [Example](./RealityKit-Text-Example) for a full working example.
 
 - After installing, import `TextEntity` to your .swift file
 - Create an instance of TextEntity:
