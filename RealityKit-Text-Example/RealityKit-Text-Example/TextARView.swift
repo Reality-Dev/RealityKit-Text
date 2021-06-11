@@ -44,7 +44,7 @@ class TextARView: ARView, ARSessionDelegate {
     
     private func setUpText(){
         
-        let text1 = TextEntity(text: "RealityKit", color: .cyan, isMetallic: true, alignment: .center)
+        let text1 = TextEntity(text: "RealityKit ♥", color: .cyan, isMetallic: true, alignment: .center)
         //--//
         let text2 = TextEntity(text: "Left", color: .white, isMetallic: false, alignment: .left)
         //--//

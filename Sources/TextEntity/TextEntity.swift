@@ -11,7 +11,7 @@ import RealityKit
 import UIKit
 
 @available(iOS 13.0, *)
-public class TextEntity : Entity {
+open class TextEntity : Entity {
     
     public var text: String = "Hello World" {
         didSet { if oldValue != text { makeText()}}}
@@ -40,7 +40,7 @@ public class TextEntity : Entity {
     }
 
     
-    required init() {
+    required public init() {
         super.init()
         makeText()
     }
