@@ -17,6 +17,8 @@ open class TextEntity : Entity {
         didSet { if oldValue != text { makeText()}}}
     public var color: UIColor = .blue {
         didSet { if oldValue != color { makeText()}}}
+    public var isLit: Bool = true {
+        didSet { if oldValue != self.isLit { makeText()}}}
     public var size: CGFloat = 0.1 {
         didSet { if oldValue != size { makeText()}}}
     public var isMetallic: Bool = true {
@@ -52,10 +54,11 @@ open class TextEntity : Entity {
         makeText(text: text, color: color)
     }
     
-    public init(text: String = "Hello World", color: UIColor = .blue, size: CGFloat = 0.1, isMetallic: Bool = true, fontName: String = "Helvetica", extrusionDepth: Float = 0.01, alignment: alignment = .center) {
+    public init(text: String = "Hello World", color: UIColor = .blue, isLit: Bool = true, size: CGFloat = 0.1, isMetallic: Bool = true, fontName: String = "Helvetica", extrusionDepth: Float = 0.01, alignment: alignment = .center) {
         super.init()
         self.text = text
         self.color = color
+        self.isLit = isLit
         self.size = size
         self.isMetallic = isMetallic
         self.fontName = fontName
@@ -70,6 +73,7 @@ open class TextEntity : Entity {
     //Using nil default values allows us to not call makeText() for every variable's didSet{} property observer upon initialization.
     private func makeText(text: String? = nil,
                           color: UIColor? = nil,
+                          isLit: Bool? = true,
                           size: CGFloat? = nil,
                           isMetallic: Bool? = nil,
                           fontName: String? = nil,
@@ -78,6 +82,7 @@ open class TextEntity : Entity {
         
         let textLocal = text ?? self.text
         let colorLocal = color ?? self.color
+        let isLitLocal = isLit ?? self.isLit
         let sizeLocal = size ?? self.size
         let isMetalliclocal = isMetallic ?? self.isMetallic
         let fontNameLocal = fontName ?? self.fontName
@@ -90,8 +95,14 @@ open class TextEntity : Entity {
                                           containerFrame: CGRect.zero,
                                           alignment: .natural,
                                           lineBreakMode: .byTruncatingTail)
-        
-        let textMaterial = SimpleMaterial.init(color: colorLocal, isMetallic: isMetalliclocal)
+        var textMaterial: Material
+        if isLitLocal {
+           textMaterial = SimpleMaterial.init(color: colorLocal, isMetallic: isMetalliclocal)
+        } else {
+            //Create an unlit material.
+            textMaterial = UnlitMaterial(color: colorLocal)
+        }
+
         textModel = ModelEntity(mesh: textMesh, materials: [textMaterial])
         textModel.name = "textModel"
         

@@ -38,6 +38,7 @@ All inputs to the initilazer have default values so they are all optional.
 These include:
 * text
 * color
+* isLit
 * size
 * isMetallic
 * fontName
