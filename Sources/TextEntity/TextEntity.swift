@@ -64,7 +64,7 @@ open class TextEntity : Entity {
         self.fontName = fontName
         self.extrusionDepth = extrusionDepth
         self.alignment = alignment
-        makeText(text: text, color: color, size: size, isMetallic: isMetallic, fontName: fontName, extrusionDepth: extrusionDepth, alignment: alignment)
+        makeText(text: text, color: color, isLit: isLit, size: size, isMetallic: isMetallic, fontName: fontName, extrusionDepth: extrusionDepth, alignment: alignment)
     }
     
 
