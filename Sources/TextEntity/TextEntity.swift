@@ -79,7 +79,7 @@ open class TextEntity : Entity {
                           fontName: String? = nil,
                           extrusionDepth: Float? = nil,
                           alignment: alignment? = nil) {
-        
+        DispatchQueue.main.async {
         let textLocal = text ?? self.text
         let colorLocal = color ?? self.color
         let isLitLocal = isLit ?? self.isLit
@@ -103,16 +103,16 @@ open class TextEntity : Entity {
             textMaterial = UnlitMaterial(color: colorLocal)
         }
 
-        textModel = ModelEntity(mesh: textMesh, materials: [textMaterial])
-        textModel.name = "textModel"
+            self.textModel = ModelEntity(mesh: textMesh, materials: [textMaterial])
+            self.textModel.name = "textModel"
         
         //removeAll(where:) is not available.
         for child in self.children { if child.name == "textModel" { child.removeFromParent() } }
-        self.addChild(textModel)
+            self.addChild(self.textModel)
         
         //Move it down and to the left relative to its parent entity by the magnitude of the compensation.
-        textModel.position = getCompensation(alignment: alignmentLocal)
-    }
+            self.textModel.position = self.getCompensation(alignment: alignmentLocal)
+        }}
 
     
     
