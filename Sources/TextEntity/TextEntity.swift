@@ -73,7 +73,7 @@ open class TextEntity : Entity {
     //Using nil default values allows us to not call makeText() for every variable's didSet{} property observer upon initialization.
     private func makeText(text: String? = nil,
                           color: UIColor? = nil,
-                          isLit: Bool? = true,
+                          isLit: Bool? = nil,
                           size: CGFloat? = nil,
                           isMetallic: Bool? = nil,
                           fontName: String? = nil,
