@@ -59,6 +59,10 @@ If anything is unclear, please [send me a tweet](https://twitter.com/gmj4k)
 If you see a way things can be done better please feel free to contribute by making a fork & pull request.
 
 
+## More
+
+Pull Requests are welcome and encouraged.
+
 
 
 
